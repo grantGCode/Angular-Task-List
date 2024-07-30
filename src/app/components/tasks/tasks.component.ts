@@ -11,14 +11,14 @@ import { TaskItemComponent } from '../task-item/task-item.component';
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
-export class TasksComponent implements OnInit {
+export class TasksComponent /*implements OnInit*/ {
   task: Task[] = [];
 
-  constructor(private taskService: TaskService) {}
+  constructor(private taskService: TaskService) {
 
-  ngOnInit(): void {
+  // ngOnInit(): void {
     this.taskService.getTasks().subscribe({
-      // next: (tasks) => this.tasks = tasks,
+      next: (task) => this.task = task,
     
     });    
   }
