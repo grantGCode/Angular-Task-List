@@ -14,4 +14,8 @@ export class TaskItemComponent {
   @Input() task!: Task;
   faTimes = faTimes;
 
+  onDelete(task: any) {
+    console.log(task);
+  }
+
 }
