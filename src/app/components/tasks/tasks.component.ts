@@ -12,13 +12,23 @@ import { TaskItemComponent } from '../task-item/task-item.component';
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
-  task: Task[] = [];
+  tasks: Task[] = [];
 
   constructor(private taskService: TaskService) {
 
     this.taskService.getTasks().subscribe({
-      next: (task) => this.task = task,
+      next: (tasks) => this.tasks = tasks,
     
-    });    
+    }); 
+    
+  }
+  deleteTask(task: Task) {
+    this.taskService.deleteTask(task).subscribe({
+        next: () => {
+          this.tasks = this.tasks.filter((t) => t.id !== task.id);
+          
+        },
+      }
+    );
   }
 }
