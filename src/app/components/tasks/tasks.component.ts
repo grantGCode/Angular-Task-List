@@ -22,6 +22,7 @@ export class TasksComponent {
     }); 
     
   }
+  
   deleteTask(task: Task) {
     this.taskService.deleteTask(task).subscribe({
         next: () => {
@@ -30,5 +31,10 @@ export class TasksComponent {
         },
       }
     );
+  }
+
+  toggleReminder(task: Task) {
+    task.reminder = !task.reminder;
+    console.log(task.reminder)
   }
 }
